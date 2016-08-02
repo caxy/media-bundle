@@ -14,6 +14,7 @@ namespace Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\PHPCR\Document\Folder;
 use Symfony\Cmf\Bundle\MediaBundle\DirectoryInterface;
+use Symfony\Cmf\Bundle\MediaBundle\HierarchyInterface;
 
 class Directory extends Folder implements DirectoryInterface
 {
@@ -97,5 +98,15 @@ class Directory extends Folder implements DirectoryInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Get the parent node.
+     *
+     * @return object|null
+     */
+    public function getParent()
+    {
+        return $this->getParentDocument();
     }
 }
